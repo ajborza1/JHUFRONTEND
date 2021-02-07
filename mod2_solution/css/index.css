@@ -37,11 +37,11 @@ h1{
 }
 
 #chickenid, #beefid, #sushiid{
-	margin-top: 0px;
+  margin-top: 0px;
   text-align: center; 
   border: 2px solid black;
   height: 55px;
-  width:150px;
+  width: 150px;
   word-wrap: break-word;
   font-family: "Times New Roman", Times, serif;
   font-size: 24px;
@@ -68,7 +68,7 @@ section {
   border: 1px solid black;
   background-color: grey;
   width: 100%;
-  height: 250px;
+  height: 300px;
   font-family: Helvetica;
   color: black;
   position: relative;
@@ -201,6 +201,7 @@ p{
     left: 0;
   	content: "Categories";
   	font-family: Arial;
+  	left: 3%;
   }
 
 
@@ -241,4 +242,3 @@ p{
   }
 
 }
-

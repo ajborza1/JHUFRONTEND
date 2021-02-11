@@ -1,0 +1,177 @@
+body {
+  font-size: 16px;
+  color: #fff;
+  background-color:  #669999;
+  font-family: 'Oxygen', sans-serif;
+}
+
+h1, h3{
+	text-align: center;
+}
+
+a, a:hover{
+
+  color: white;
+}
+
+p{
+	padding: 5px;
+}
+
+
+#chicken, #beef, #sushi{
+
+ border: 1px solid;
+ margin: 15px;
+ background-color: #334d4d;
+}
+
+/** HEADER **/
+#header-nav {
+  background-color: #334d4d;
+  border-radius: 0;
+  border: 0;
+}
+
+
+.navbar-brand {
+  padding-top: 25px;
+}
+
+.navbar-brand h1 { /* Restaurant name */
+  font-family: 'Lora', serif;
+  color: #fff;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #222;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: .75;
+}
+
+.navbar-brand a:hover, .navbar-brand a:focus {
+  text-decoration: none;
+}
+.navbar-brand p { /* Kosher cert */
+  color: #000;
+  text-transform: uppercase;
+  font-size: .7em;
+  margin-top: 15px;
+}
+.navbar-brand p span { /* Star-K */
+  vertical-align: middle;
+}
+
+#nav-list {
+  margin-top: 10px;
+}
+
+#nav-list a {
+  color: black;
+  text-align: center;
+  background-color: white;
+  border: 1px solid;
+}
+
+#nav-list a:hover {
+  background: #669999;
+}
+
+#nav-list a span {
+  font-size: 1.8em;
+}
+
+.navbar-header button.navbar-toggle, .navbar-header .icon-bar {
+  border: 1px solid #fff;
+}
+
+.navbar-header button.navbar-toggle {
+  clear: both;
+  margin-top: -30px;
+}
+/* END HEADER */
+
+
+/* END HOME PAGE */
+
+/********** Large devices only **********/
+@media (min-width: 1200px) {
+  .container-fluid .main {
+  	margin-top: 0px;
+    height: 700px;
+  }
+
+
+ a{
+    visibility: hidden;
+  }
+
+}
+
+/********** Medium devices only **********/
+@media (min-width: 992px) and (max-width: 1199px) {
+
+  /* Home Page */
+  .container-fluid .main {
+    height: 558px;
+
+    }
+ a {
+    visibility: hidden;
+  }
+
+  
+  /* End Home Page */
+}
+
+/********** Small devices only **********/
+@media (min-width: 768px) and (max-width: 991px) {
+  /* Home Page */
+ .container-fluid .main {
+    height: 432px;
+  }
+
+   a {
+    visibility: hidden;
+  }
+  /* End Home Page */
+
+}
+
+/********** Extra small devices only **********/
+@media (max-width: 767px) {
+  /* Header */
+  .navbar-brand {
+    padding-top: 10px;
+    height: 80px;
+  }
+  .navbar-brand h1 { /* Restaurant name */
+    padding-top: 10px;
+    font-size: 5vw; /* 1vw = 1% of viewport width */
+  }
+
+  .main-content{
+  	visibility: hidden;
+  }
+
+  .navbar-brand p img {  
+    height: 20px;
+  }
+
+  #collapsable-nav a { /* Collapsed nav menu text */
+    font-size: 1.2em;
+  }
+  #collapsable-nav a span { /* Collapsed nav menu glyph */
+    font-size: 1em;
+    margin-right: 5px;
+  }
+
+
+  /* Home Page */
+   .container-fluid .main {
+    margin-top: 30px;
+    padding: 0;
+  }
+
+}

@@ -5,12 +5,12 @@ body {
   font-family: 'Oxygen', sans-serif;
 }
 
+
 h1, h3{
 	text-align: center;
 }
 
 a, a:hover{
-
   color: white;
 }
 
@@ -20,13 +20,12 @@ p{
 
 
 #chicken, #beef, #sushi{
-
  border: 1px solid;
  margin: 15px;
  background-color: #334d4d;
 }
 
-/** HEADER **/
+
 #header-nav {
   background-color: #334d4d;
   border-radius: 0;
@@ -38,7 +37,7 @@ p{
   padding-top: 25px;
 }
 
-.navbar-brand h1 { /* Restaurant name */
+.navbar-brand h1 { 
   font-family: 'Lora', serif;
   color: #fff;
   font-size: 1.5em;
@@ -53,13 +52,13 @@ p{
 .navbar-brand a:hover, .navbar-brand a:focus {
   text-decoration: none;
 }
-.navbar-brand p { /* Kosher cert */
+.navbar-brand p { 
   color: #000;
   text-transform: uppercase;
   font-size: .7em;
   margin-top: 15px;
 }
-.navbar-brand p span { /* Star-K */
+.navbar-brand p span { 
   vertical-align: middle;
 }
 
@@ -90,18 +89,14 @@ p{
   clear: both;
   margin-top: -30px;
 }
-/* END HEADER */
-
-
-/* END HOME PAGE */
 
 /********** Large devices only **********/
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
   .container-fluid .main {
   	margin-top: 0px;
     height: 700px;
-  }
 
+  }
 
  a{
     visibility: hidden;
@@ -110,9 +105,8 @@ p{
 }
 
 /********** Medium devices only **********/
-@media (min-width: 992px) and (max-width: 1199px) {
+/*@media (min-width: 992px) and (max-width: 1199px) {
 
-  /* Home Page */
   .container-fluid .main {
     height: 558px;
 
@@ -120,14 +114,10 @@ p{
  a {
     visibility: hidden;
   }
-
-  
-  /* End Home Page */
 }
-
-/********** Small devices only **********/
+*/
+/********** Medium devices only **********/
 @media (min-width: 768px) and (max-width: 991px) {
-  /* Home Page */
  .container-fluid .main {
     height: 432px;
   }
@@ -135,20 +125,18 @@ p{
    a {
     visibility: hidden;
   }
-  /* End Home Page */
 
 }
 
-/********** Extra small devices only **********/
+/********** Small devices only **********/
 @media (max-width: 767px) {
-  /* Header */
   .navbar-brand {
     padding-top: 10px;
     height: 80px;
   }
-  .navbar-brand h1 { /* Restaurant name */
+  .navbar-brand h1 { 
     padding-top: 10px;
-    font-size: 5vw; /* 1vw = 1% of viewport width */
+    font-size: 5vw; 
   }
 
   .main-content{

@@ -1,3 +1,9 @@
+/**
+  Anthony Borza
+  Assignment 3
+  Due Date: 2/16/2021
+*/
+
 body {
   font-size: 16px;
   color: #fff;
@@ -5,10 +11,6 @@ body {
   font-family: 'Oxygen', sans-serif;
 }
 
-
-h1, h3{
-	text-align: center;
-}
 
 a, a:hover{
   color: white;
@@ -105,24 +107,12 @@ p{
 }
 
 /********** Medium devices only **********/
-/*@media (min-width: 992px) and (max-width: 1199px) {
-
-  .container-fluid .main {
-    height: 558px;
-
-    }
- a {
-    visibility: hidden;
-  }
-}
-*/
-/********** Medium devices only **********/
 @media (min-width: 768px) and (max-width: 991px) {
  .container-fluid .main {
-    height: 432px;
+    height: 700px;
   }
 
-   a {
+  a {
     visibility: hidden;
   }
 
@@ -139,25 +129,24 @@ p{
     font-size: 5vw; 
   }
 
-  .main-content{
+/*  .main-content{
   	visibility: hidden;
-  }
+  }*/
 
-  .navbar-brand p img {  
+  .navbar-brand p {  
     height: 20px;
   }
 
-  #collapsable-nav a { /* Collapsed nav menu text */
+  #collapsable-nav a { 
     font-size: 1.2em;
   }
-  #collapsable-nav a span { /* Collapsed nav menu glyph */
+
+  #collapsable-nav a span { 
     font-size: 1em;
     margin-right: 5px;
   }
 
-
-  /* Home Page */
-   .container-fluid .main {
+  .container-fluid .main {
     margin-top: 30px;
     padding: 0;
   }

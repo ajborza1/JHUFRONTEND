@@ -1,2 +1,2 @@
 # JHUFRONTEND
-Spring Class
+Spring Class 2021 class

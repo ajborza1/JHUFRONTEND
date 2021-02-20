@@ -38,6 +38,7 @@ WARNING!!! WARNING!!!
 
 	var names = ["Yaakov", "John", "Jen", "Jason", "Paul", "Frank", "Larry", "Paula", "Laura", "Jim"];
 
+
 	// STEP 10:
 	// Loop over the names array and say either 'Hello' or "Good Bye"
 	// using either the helloSpeaker's or byeSpeaker's 'speak' method.
@@ -52,17 +53,50 @@ WARNING!!! WARNING!!!
 	  // to lower case character 'j' afterwards.
 	  // Look up these methods on Mozilla Developer Network web site if needed.
 	  var firstLetter  = names[i].charAt(0).toLowerCase();
-	  console.log(firstLetter);
+	  //console.log(firstLetter);
+
 
 	  // STEP 12:
 	  // Compare the 'firstLetter' retrieved in STEP 11 to lower case
 	  // 'j'. If the same, call byeSpeaker's 'speak' method with the current name
 	  // in the loop. Otherwise, call helloSpeaker's 'speak' method with the current
 	  // name in the loop.
+
 	  if (firstLetter == 'j') {
 	     byeSpeaker.speak(names[i]);
+
+
 	  } else {
 	     helloSpeaker.speak(names[i]);
 	  }
+
 	}
+
+	 //2(b)
+ 	 //create an array based on the names array. 
+	 // This array will contain the greetings based on the names with the same rules as implemented previously
+	 //The function passed into the map function should not be an inline function, i.e.,
+	 //separate it into its own named function and pass it into the map function as a value.
+	 // The end result should be that the list prints out twice in the browser console after you complete this part.
+
+	var namesArray = names.map(function speakSimple(name) {
+
+		return  name;
+	});
+	
+	for(var i = 0; i < namesArray.length; i++) {
+
+	  var firstLetter  = namesArray[i].charAt(0).toLowerCase();
+	
+
+	  if (firstLetter == 'j') {
+	     console.log(byeSpeaker.speakSimple(namesArray[i]));
+
+	  } else {
+	     helloSpeaker.speakSimple(namesArray[i]);
+	     console.log(helloSpeaker.speakSimple(namesArray[i]));
+	  }
+
+	}
+	
 })();

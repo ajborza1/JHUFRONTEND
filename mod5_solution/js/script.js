@@ -132,13 +132,12 @@ function getRandom(min, max){
   var random_number = Math.floor(Math.random() *  5) + 1;
   var star = "";
 
-// iterates though the randome numbers 
+// iterates though the random numbers 
  for(i = 0; i < random_number; i++){
-    
-     star += '<i class=" fa fa-star "></i>'
+     star += '<i class=" fa fa-star "></i>' 
  }
-
-  return star;
+    star += "\n  " + random_number +  " Star Rating";    // appends words to star rating
+    return star;
 }
 
 // use to load about page

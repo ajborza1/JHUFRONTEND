@@ -125,32 +125,40 @@ function buildAndShowHomeHTML (categories) {
     false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
 }
 
-
 // function that produces a random number from 1 to 5 (inclusively)
+function getRandom(min, max){
+
+  var i;
+  var random_number = Math.floor(Math.random() *  5) + 1;
+  var star = "";
+
+// iterates though the randome numbers 
+ for(i = 0; i < random_number; i++){
+    
+     star += '<i class=" fa fa-star "></i>'
+ }
+
+  return star;
+}
+
+// use to load about page
 dc.randomNumber = function(){
 
  $ajaxUtils.sendGetRequest(aboutPageHtml, function (about) {
 
-    var random_number = Math.floor(Math.random() * 5);
+    // calls getRandom method
+    var random_number =  getRandom();
 
-    var insertIntoAbout = insertProperty(about, "aboutPage", "'" + random_number + "'");
+    // use insertProperty method
+    var insertIntoAbout = insertProperty(about, "restrauntRatings", "" + random_number + "" );
     
+    // inserts the html 
     insertHtml("#main-content", insertIntoAbout);
     
   },
   false);
 
 }
-
-// dc.loadAbout = function(){
-//   showLoading("#main-content");
- 
-//     var random_number = randomNumber();
-
-//     var insertIntoAbout = insertProperty(homeHtml, "aboutPage", "'" + random_number + "'");
-
-//     insertHtml("#main-content", random_number);
-// };
 
 
 // Given array of category objects, returns a random category object.

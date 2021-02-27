@@ -129,12 +129,17 @@ function buildAndShowHomeHTML (categories) {
 function getRandom(min, max){
 
   var i;
-  var random_number = Math.floor(Math.random() *  5) + 1;
+  var random_number = Math.floor(Math.random() *  6) ;
   var star = "";
-
+ 
 // iterates though the random numbers 
  for(i = 0; i < random_number; i++){
-     star += '<i class=" fa fa-star "></i>' 
+    if(random_number == 0){
+      star += '<i class=" fa fa-star-o "></i>' 
+    }
+    else{
+      star += '<i class=" fa fa-star "></i>' 
+    }
  }
     star += "\n  " + random_number +  " Star Rating";    // appends words to star rating
     return star;
@@ -149,7 +154,7 @@ dc.randomNumber = function(){
     var random_number =  getRandom();
 
     // use insertProperty method
-    var insertIntoAbout = insertProperty(about, "restrauntRatings", "" + random_number + "" );
+    var insertIntoAbout = insertProperty(about, "restrauntRatings",  "" + random_number + "" );
     
     // inserts the html 
     insertHtml("#main-content", insertIntoAbout);

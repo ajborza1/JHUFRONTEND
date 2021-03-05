@@ -3,39 +3,45 @@
 'use strict';
 
 // declare angular module 
-angular.module('LunchCheck', [])
-.controller('LunchCheckController', function($scope){
+angular.module('LunchCheck', []).controller('LunchCheckController', LunchCheckController);
 
 // declare an inject property
-LunchCheckController.$inject = ['$scope', '$filter'];
-
+LunchCheckController.$inject = ['$scope'];
 
 	function LunchCheckController($scope){
 
-		$scope.items = "";
-		$scope.message = "";
+		$scope.items = '';
+		$scope.message = '';
+
 
 		$scope.results = function(){
 		
-			var splitString = $scope.items.split(",", 3);
+			var splitString = $scope.items.split(",");
 
-			for(var i = 0; i < splitString.length; i++ ){
-
-				if(splitString.length <= 3){
-
-					$scope.message = "Please Enjoy!";
-				}
-				else if(splitString.length > 3){
-
-					$scope.message = "Thats two Much!";
-				}
-				else{
-					$scope.message = "You entered nothing!";
-				}
-			};
+			if($scope.items == 0){
+				$scope.message = "Please enter data first";
+				$scope.color = {
+					'color': 'red',
+					'background-border': 'red'
+					 };
+				
+			}
+			else if(splitString.length <= 3){
+				$scope.message = "Please Enjoy!";
+				$scope.color = {
+					'color': 'green',
+					'background-border': 'red'
+					};
+			}
+			else if(splitString.length > 3){
+				$scope.message = "Thats two Much!";
+				$scope.color = {
+					'color': 'green',
+					'background-border': 'green'
+					};
+			}
+		
 		}
-
-	}
-});
+	};
 
 }());

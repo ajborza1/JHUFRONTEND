@@ -34,7 +34,16 @@ function ToBuyController(ShoppingListService){
 
   	toBuyItem.buyItem = function(itemIndex){
 		ShoppingListService.buyItem(itemIndex);
-  	};
+  	}
+
+  	toBuyItem.errorMessage = function(){
+  		if(toBuyItem.buyItems.length > 0){
+  			return false;
+  		}
+  		else{
+  			return true;
+  		}
+  	}
 
 }
 
@@ -48,6 +57,15 @@ function AlreadyBoughtController(ShoppingListService){
 
 	// show bought items
 	showBought.boughtItems = ShoppingListService.getBoughtItems();
+
+	showBought.errorMessage = function(){
+		if(showBought.boughtItems.length > 0){
+  			return false;
+  		}
+  		else{
+  			true;
+  		}
+	}
 }
 
 
@@ -85,20 +103,21 @@ function ShoppingListService(){
 
 
 	service.addBuyItem = function(item, quantity){
-	  var boughtItems =
+	  var boughtItem =
 	   {
 	      name: item,
 	      quantity: quantity
 	   };
-	    buyItems.push(boughtItems);
+	    buyItems.push(boughtItem);
 	}
 
 	// moves elements from one buyItems array to boughtItems array
 	service.buyItem = function (itemIndex){
 		var item = buyItems[itemIndex];
 		boughtItems.push(item)
-		buyItems.splce(itemIndex,1);
+		buyItems.splice(itemIndex, 1);
 	};
+
 
 	// show items that are ready to buy
 	service.getBuyItems = function(){
@@ -110,7 +129,6 @@ function ShoppingListService(){
 		return boughtItems;
 	};
 }
-
 
 }());
 

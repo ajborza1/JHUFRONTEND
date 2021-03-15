@@ -1,5 +1,3 @@
-
-
 // Anthony Borza
 // Assignment 7
 // Due Date: 3/23/2021
@@ -30,8 +28,12 @@ function ToBuyController(ShoppingListService){
 	// show items for purchases
 	toBuyItem.buyItems = ShoppingListService.getBuyItems();
 
-  	toBuyItem.addBuyItem = function () {
-    	ShoppingListService.addBuyItem(toBuyItem.itemName, toBuyItem.itemQuantity);
+  	toBuyItem.addBuyItem = function (item, quantity) {
+    	ShoppingListService.addBuyItem(toBuyItem.item, toBuyItem.quantity);
+  	}
+
+  	toBuyItem.buyItem = function(itemIndex){
+		ShoppingListService.buyItem(itemIndex);
   	};
 
 }
@@ -41,22 +43,17 @@ function AlreadyBoughtController(ShoppingListService){
 
 	var showBought = this;
 
+	showBought.itemName = "";
+	showBought.itemQuantity = "";
+
 	// show bought items
 	showBought.boughtItems = ShoppingListService.getBoughtItems();
-
-	// puts removed element from buyItem in showBought
-
-
-	// showBought.moveBuyToBought = function(itemIndex, buyItems, boughtItems){
-	// 	ShoppingListService.moveBuyToBought(itemIndex, buyItems, boughtItems);
-	// };
 }
 
 
 function ShoppingListService(){
 
 	var service = this;
-
 
 	// array to hold list of shopping items
 	var boughtItems = [];
@@ -87,22 +84,21 @@ function ShoppingListService(){
 	];
 
 
-	service.addBuyItem = function(itemName, quantity){
+	service.addBuyItem = function(item, quantity){
 	  var boughtItems =
 	   {
-	      name: itemName,
+	      name: item,
 	      quantity: quantity
 	   };
 	    buyItems.push(boughtItems);
 	}
 
-
 	// moves elements from one buyItems array to boughtItems array
-	service.moveBuyToBought = function (itemIndex, buyItems, boughtItems){
-		boughtItems.push(buyItems[itemIndex]);
-		buyItems.splice(itemIndex, 1);
+	service.buyItem = function (itemIndex){
+		var item = buyItems[itemIndex];
+		boughtItems.push(item)
+		buyItems.splce(itemIndex,1);
 	};
-
 
 	// show items that are ready to buy
 	service.getBuyItems = function(){
@@ -117,3 +113,5 @@ function ShoppingListService(){
 
 
 }());
+
+

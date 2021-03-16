@@ -23,17 +23,22 @@ function ToBuyController(ShoppingListService){
 	var toBuyItem = this;
 
 	toBuyItem.itemName = "";
-	toBuyItem.itemQuantity = "";
+	toBuyItem.itemQuantity = 0;
+	toBuyItem.price = 0;
 	
 	// show items for purchases
 	toBuyItem.buyItems = ShoppingListService.getBuyItems();
 
-  	toBuyItem.addBuyItem = function (item, quantity) {
-    	ShoppingListService.addBuyItem(toBuyItem.item, toBuyItem.quantity);
+  	toBuyItem.addBuyItem = function () {
+    	ShoppingListService.addBuyItem(toBuyItem.itemName, toBuyItem.itemQuantity, toBuyItem.price);
   	}
 
   	toBuyItem.buyItem = function(itemIndex){
 		ShoppingListService.buyItem(itemIndex);
+  	}
+
+  	toBuyItem.totalPrice = function (buyItems){
+  		ShoppingListService.totalPrice(buyItems);
   	}
 
   	toBuyItem.errorMessage = function(){
@@ -52,9 +57,6 @@ function AlreadyBoughtController(ShoppingListService){
 
 	var showBought = this;
 
-	showBought.itemName = "";
-	showBought.itemQuantity = "";
-
 	// show bought items
 	showBought.boughtItems = ShoppingListService.getBoughtItems();
 
@@ -63,7 +65,7 @@ function AlreadyBoughtController(ShoppingListService){
   			return false;
   		}
   		else{
-  			true;
+  			return true;
   		}
 	}
 }
@@ -80,33 +82,46 @@ function ShoppingListService(){
 	var buyItems =
 	[
 		{
-			name: "cookies",
-		 	quantity: "10"
+			name: "Cookies",
+		 	quantity: 10,
+		 	price: 2.00
 		}, 
 		{
 			name: "Coke", 
-			quantity: "3"
+			quantity: 3,
+			price: 2.99
 		},
 		{
 			name: "Chips",
-			quantity: "4"
+			quantity: 4,
+			price: 3.99
 		},
 		{
 			name: "Candy",
-			quantity: "2"
+			quantity: 5,
+			price: 1.59
 		},
 		{
 			name: "Apples", 
-			quantity: "6"
+			quantity: 6,
+			price: 5.99
 		}
 	];
 
+	service.totalPrice = function (buyItems) {  
+       var total = 0;  
+        for(var k in buyItems){
+        	total += quantity[k] * price[k];
+        };
+        return total;
+	}
 
-	service.addBuyItem = function(item, quantity){
+	service.addBuyItem = function(item, quantity, price){
 	  var boughtItem =
 	   {
 	      name: item,
-	      quantity: quantity
+	      quantity: quantity,
+	      price: price
 	   };
 	    buyItems.push(boughtItem);
 	}
@@ -115,9 +130,9 @@ function ShoppingListService(){
 	service.buyItem = function (itemIndex){
 		var item = buyItems[itemIndex];
 		boughtItems.push(item)
+
 		buyItems.splice(itemIndex, 1);
 	};
-
 
 	// show items that are ready to buy
 	service.getBuyItems = function(){

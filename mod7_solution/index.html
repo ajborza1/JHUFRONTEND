@@ -22,6 +22,10 @@
       button > span {
         color: green;
       }
+      .total{
+        font-size: 18px;
+        font-weight: bold;
+      }
     </style>
   </head>
 <body>
@@ -45,10 +49,10 @@
         <div class="col-md-6" ng-controller="AlreadyBoughtController as showBought">
            <h2>Already Bought:</h2>
               <ul>
-                <li ng-repeat="item in showBought.boughtItems ">
-                    {{item.quantity}} of {{item.name}} Total Cost: {{item.quantity * item.price | currency }}
-                    ${{ item.price * item.quantity }}</li>
-            </ul>
+                <li ng-repeat="item in showBought.boughtItems">
+                    {{item.quantity}} of {{item.name}} Total Cost: {{item.quantity * item.price | currency }} </li>
+                   <p class="total">Grand Total: {{showBought.totalPrice() | currency}}</p> 
+              </ul>
                <div ng-if="showBought.errorMessage()" class="emptyMessage">Nothing Bought Yet!</div>
         </div>
      </div>

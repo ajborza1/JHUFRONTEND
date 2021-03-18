@@ -13,6 +13,7 @@ angular.module('ShoppingListCheckOff', [])
 .controller('AlreadyBoughtController', AlreadyBoughtController)
 .service('ShoppingListService', ShoppingListService);
 
+
 // declare two contollers using the singleton 
 // approach to share data
 
@@ -37,19 +38,6 @@ function ToBuyController(ShoppingListService){
 		ShoppingListService.buyItem(itemIndex);
   	}
 
-  	toBuyItem.totalPrice = function (buyItems){
-  		ShoppingListService.totalPrice(buyItems);
-  	}
-
-  	toBuyItem.errorMessage = function(){
-  		if(toBuyItem.buyItems.length > 0){
-  			return false;
-  		}
-  		else{
-  			return true;
-  		}
-  	}
-
 }
 
 AlreadyBoughtController.$inject = ['ShoppingListService'];
@@ -59,18 +47,15 @@ function AlreadyBoughtController(ShoppingListService){
 
 	// show bought items
 	showBought.boughtItems = ShoppingListService.getBoughtItems();
+	
+	showBought.totalPrice = function (quantity, price){
+  		ShoppingListService.totalPrice(quantity, price);
+  	}
 
-	showBought.errorMessage = function(){
-		if(showBought.boughtItems.length > 0){
-  			return false;
-  		}
-  		else{
-  			return true;
-  		}
-	}
+
 }
 
-
+// handles all business logic for shopping list
 function ShoppingListService(){
 
 	var service = this;
@@ -108,14 +93,16 @@ function ShoppingListService(){
 		}
 	];
 
-	service.totalPrice = function (buyItems) {  
-       var total = 0;  
-        for(var k in buyItems){
-        	total += quantity[k] * price[k];
-        };
-        return total;
-	}
+	// calculate total price of all items
+	service.totalPrice = function (quantity,price) {  
+		var total = 0;
+		for(var i in boughtItems){
+			total += quantity[i] * price[i];
+		};
+		return total;
+   }
 
+	// adds item and pushes it to boughtItem
 	service.addBuyItem = function(item, quantity, price){
 	  var boughtItem =
 	   {
@@ -130,7 +117,6 @@ function ShoppingListService(){
 	service.buyItem = function (itemIndex){
 		var item = buyItems[itemIndex];
 		boughtItems.push(item)
-
 		buyItems.splice(itemIndex, 1);
 	};
 

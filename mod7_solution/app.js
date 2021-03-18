@@ -38,6 +38,16 @@ function ToBuyController(ShoppingListService){
 		ShoppingListService.buyItem(itemIndex);
   	}
 
+
+  	toBuyItem.errorMessage = function(){
+  		if(toBuyItem.buyItems.length > 0){
+  			return false;
+  		}
+  		else{
+  			return true;
+  		}
+  	}
+
 }
 
 AlreadyBoughtController.$inject = ['ShoppingListService'];
@@ -47,12 +57,22 @@ function AlreadyBoughtController(ShoppingListService){
 
 	// show bought items
 	showBought.boughtItems = ShoppingListService.getBoughtItems();
-	
-	showBought.totalPrice = function (quantity, price){
-  		ShoppingListService.totalPrice(quantity, price);
+	// showBought.itemQuantity = 0;
+	// showBought.price = 0;
+
+	showBought.totalPrice = function (){
+
+  		ShoppingListService.totalPrice(showBought.quantity, showBought.price);
   	}
 
-
+	showBought.errorMessage = function(){
+		if(showBought.boughtItems.length > 0){
+  			return false;
+  		}
+  		else{
+  			return true;
+  		}
+	}
 }
 
 // handles all business logic for shopping list
@@ -93,11 +113,12 @@ function ShoppingListService(){
 		}
 	];
 
-	// calculate total price of all items
+	//calculate total price of all items
 	service.totalPrice = function (quantity,price) {  
 		var total = 0;
-		for(var i in boughtItems){
-			total += quantity[i] * price[i];
+		for(var i = 0; i < boughtItems.length; i++){
+			var product = boughtItems[i];
+			total += product.quantity * product.price;
 		};
 		return total;
    }

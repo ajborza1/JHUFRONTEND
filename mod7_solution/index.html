@@ -26,40 +26,33 @@
   </head>
 <body>
   <div class="container">
-  <h1>Shopping List Check Off</h1>
+    <h1>Shopping List Check Off</h1>
 
-  <div class="row">
+    <div class="row">
+      <!-- To Buy List -->
+        <div class="col-md-6" ng-controller="ToBuyController as toBuyItem">
+           <h2>To Buy:</h2>
+             <ul>
+                <li ng-repeat="item in toBuyItem.buyItems ">
+                    {{item.quantity}} of {{item.name}} Cost: {{item.price | currency}}
+                    <button ng-click="toBuyItem.buyItem($index);"> <span class="glyphicon glyphicon-ok"></span> Bought</button>       
+                </li>
+             </ul>
+            <div ng-if="toBuyItem.errorMessage()" class="emptyMessage">Everything has been bought!</div>
+        </div>
 
-    <!-- To Buy List -->
-    <div class="col-md-6" ng-controller="ToBuyController as toBuyItem">
-     <h2>To Buy:</h2>
-     <ul>
-      <li ng-repeat="item in toBuyItem.buyItems ">
-          {{item.quantity}} of {{item.name}} cost {{item.price | currency}}
-          <button ng-click="toBuyItem.buyItem($index);"> <span class="glyphicon glyphicon-ok"></span> Bought</button>
-          
-      </li>
-     </ul>
-  
-    </div>
-
-    <!-- Already Bought List -->
-    <div class="col-md-6" ng-controller="AlreadyBoughtController as showBought">
-     <h2>Already Bought:</h2>
-      <li ng-repeat="item in showBought.boughtItems ">
-          {{item.quantity}} of {{item.name}}  
-          Total Cost: {{item.quantity * item.price | currency }}
-          Grand Total: {{showBought.totalPrice() }}
-        </li>
-
-      </div>  
-        </div>       
-     <ul>
-     </ul>
-     
-    </div>
+        <!-- Already Bought List -->
+        <div class="col-md-6" ng-controller="AlreadyBoughtController as showBought">
+           <h2>Already Bought:</h2>
+              <ul>
+                <li ng-repeat="item in showBought.boughtItems ">
+                    {{item.quantity}} of {{item.name}} Total Cost: {{item.quantity * item.price | currency }}
+                    ${{ item.price * item.quantity }}</li>
+            </ul>
+               <div ng-if="showBought.errorMessage()" class="emptyMessage">Nothing Bought Yet!</div>
+        </div>
+     </div>
   </div>
-</div>
 
 </body>
 </html>

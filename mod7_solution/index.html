@@ -1,3 +1,10 @@
+<!-- 
+  Anthony Borza
+  Assignment 7
+  Due Date: 3/23/2021
+  index.html: This class handles user interface portion
+  and displays the business logic develoepd in app.js
+ -->
 <!doctype html>
 <html lang="en" ng-app="ShoppingListCheckOff">
   <head>
@@ -11,6 +18,9 @@
         font-weight: bold;
         color: red;
         font-size: 1.2em;
+      }
+      h1{
+      	text-align: center;
       }
       li {
         margin-bottom: 7px;
@@ -51,7 +61,7 @@
               <ul>
                 <li ng-repeat="item in showBought.boughtItems">
                     {{item.quantity}} of {{item.name}} Total Cost: {{item.quantity * item.price | currency }} </li>
-                   <p class="total">Grand Total: {{showBought.totalPrice() | currency}}</p> 
+                   <p class="total">Grand Total: {{showBought.money | moneyFilter}} {{showBought.totalPrice()}}</p> 
               </ul>
                <div ng-if="showBought.errorMessage()" class="emptyMessage">Nothing Bought Yet!</div>
         </div>

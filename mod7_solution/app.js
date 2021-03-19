@@ -1,7 +1,9 @@
 // Anthony Borza
 // Assignment 7
 // Due Date: 3/23/2021
-// app.js: 
+// app.js: This class handles the business logic for creating
+// a shopping list that allows you to check off items that 
+// you have already purchaed. 
 
 (function (){
 
@@ -11,8 +13,14 @@
 angular.module('ShoppingListCheckOff', [])
 .controller('ToBuyController',ToBuyController)
 .controller('AlreadyBoughtController', AlreadyBoughtController)
-.service('ShoppingListService', ShoppingListService);
+.service('ShoppingListService', ShoppingListService)
 
+// custom filter to return $$$ 
+.filter('moneyFilter', function(){
+	return function(value){
+		return value.toString();
+	};
+});
 
 // declare two contollers using the singleton 
 // approach to share data
@@ -38,7 +46,6 @@ function ToBuyController(ShoppingListService){
 		ShoppingListService.buyItem(itemIndex);
   	}
 
-
   	// displays error message for if everything is bought
   	toBuyItem.errorMessage = function(){
   		if(toBuyItem.buyItems.length > 0){
@@ -48,23 +55,25 @@ function ToBuyController(ShoppingListService){
   			return true;
   		}
   	}
-
 }
 
 AlreadyBoughtController.$inject = ['ShoppingListService'];
 function AlreadyBoughtController(ShoppingListService){
 
+	// reference showBought
 	var showBought = this;
 
 	// show bought items
 	showBought.boughtItems = ShoppingListService.getBoughtItems();
+	
+	showBought.money = '$$$';
 
 	// calculates total cost of all items
 	showBought.totalPrice = function (){
   		var total = 0;
 		for(var i = 0; i < showBought.boughtItems.length; i++){
 			var product = showBought.boughtItems[i];
-			total += product.quantity * product.price;
+			total +=  product.quantity * product.price;
 		};
 		return total;
   	}
@@ -83,6 +92,7 @@ function AlreadyBoughtController(ShoppingListService){
 // handles all business logic for shopping list
 function ShoppingListService(){
 
+	// reference service
 	var service = this;
 
 	// array to hold list of shopping items
@@ -117,7 +127,6 @@ function ShoppingListService(){
 			price: 5.99
 		}
 	];
-
 
 	// adds item and pushes it to boughtItem
 	service.addBuyItem = function(item, quantity, price){

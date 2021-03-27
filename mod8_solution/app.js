@@ -7,21 +7,21 @@ angular.module('NarrowItDownApp', [])
 .controller('NarrowItDownController', NarrowItDownController)
 .service('MenuSearchService', MenuSearchService)
 .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com")
-.directive('foundItemsDirective', FoundItemsDirective);									// foundItems directive
+.directive('foundItems', FoundItemsDirective);									// foundItems directive
 
 
 
-// foundItems directive
+// Declare and create foundItems directive. 
 function FoundItemsDirective() {
 
   var ddo = {
-    templateUrl: 'foundItems.html',
+   templateUrl: 'foundItems.html',
     scope: {
-      foundItems: '<',
+      found: '<',
       onRemove: '&'
     },
-    controller: NarrowItDownDirectiveController,
-    controllerAs: 'found',
+    controller: NarrowItDownController,
+    controllerAs: 'list',
     bindToController: true
   };
 
@@ -29,99 +29,88 @@ function FoundItemsDirective() {
 }
 
 
-// function to loop through search items
-
-function NarrowItDownDirectiveController(){
-	var found  = this;
-
-	// check to see if item is in list
-	found.itemInList = function(){
-		for(var i = 0; i < found.items.length; i++){
-			
-			var foundItems = found.items[i].searchTerm;
-		}
-
-	}
-}
-
-
 // NarrowItDownController should be injected with MenuSearchService
+// when found should be stored in found property that is 
+// attached to controller instance
+// create a promise for searchTerm
+// call getMatchedMenuItems()
+// function to remove items
 NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController(MenuSearchService){
 
 	var list = this;
 
-	//  when found should be stored in found property that is 
-	// attached to controller instance
 	list.found = [];
 
-	// create a promise for searchTerm
-	// call getMatchedMenuItems()
+	list.searchTerm = "";
 
 	list.getMatchedMenuItems = function(searchTerm){
+		if(list.searchTerm == ""){
+			list.found = [];
+			return;
+		}
 
-		var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
+		var promise = MenuSearchService.getMatchedMenuItems(list.searchTerm);
 
-		promise.then(function (resposne){
+		promise.then(function(response){
 
-			list.found = resposne;
+			list.found = response;
+			console.log(list.found);
 		})
-		.catch(function (error){
+		.catch(function(error){
 
 			console.log(error);
 		})
 	};
 
-
-	// function to remove items
 	list.removeItem = function(itemIndex){
-		list.found.removeItem(itemIndex);
+		list.found.splice(itemIndex, 1);
 	};
+
+	list.errorMessage = function(){
+
+		return list.found.length == 0;
+	}
+
+
 }
 
-
+// reaches out to the server (using the $htpp service)
+// to retrive the list of all themenu items.
+// loop through the menu items to determine
+// which ones whoes description matches the searchTerm
 MenuSearchService.$inject = ['$http', 'ApiBasePath'];
 function MenuSearchService($http, ApiBasePath){
 
 	var service = this;
 
 	var foundItems = [];
-	// reaches out to the server (using the $htpp service)
-	// to  retrive the list of all themenu items.
-
-	  service.getMenuItems = function () {
-	    var response = $http({
-	      method: "GET",
-	      url: (ApiBasePath + "/menu_items.json"),
-	    });
-	    return response;
-	  };
-
-	// loop through the menu items to determine
-	// which ones whoes description matches the searchTerm
+	
 	service.getMatchedMenuItems = function(searchTerm){
 		return $http({
+			
 			method: 'GET',
 			url: (ApiBasePath + "/menu_items.json"),
-
+   	
 		}).then(function(result){
 
 			var menu = result.data.menu_items;
 
 			for(var i = 0; i < menu.length; i++){
-				var item = menu[i].short_name.indexOf(searchTerm);
-				if(item >= 0){
-					foundItems.push(item);
+				
+				var item = menu[i].short_name.toLowerCase().indexOf(searchTerm.toLowerCase());
+
+				if(item !== -1){
+					foundItems.push(menu[i]);
 				}
 			}
+			console.log(foundItems);
 			return foundItems;
 
 		});
 	}
-
-	service.removeItem = function(itemIndex){
-		foundItems.splice(itemIndex, 1);
-	};
 }
 
 })();
+
+

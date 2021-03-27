@@ -11,9 +11,9 @@
 		<td>{{item.short_name}}</td>
 		<td>{{item.name}}</td>
 		<td>{{item.description}}</td>
-		<td> <button ng-click="list.onRemove({index: $index});">Remove Item</button></td>
+		<td><button ng-click="list.onRemove({index: $index});">Remove Item</button></td>
 	</tr>
 </table>
-	<div ng-if="list.errorMessage()">No Search Results available</div>
+<div class="error" ng-if="list.errorMessage()">Nothing Found!</div>
 
 	

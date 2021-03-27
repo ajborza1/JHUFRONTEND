@@ -35,6 +35,7 @@ function FoundItemsDirective() {
 // create a promise for searchTerm
 // call getMatchedMenuItems()
 // function to remove items
+// function to display error message
 NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController(MenuSearchService){
 
@@ -47,7 +48,7 @@ function NarrowItDownController(MenuSearchService){
 	list.getMatchedMenuItems = function(searchTerm){
 		if(list.searchTerm == ""){
 			list.found = [];
-			return;
+			return ;
 		}
 
 		var promise = MenuSearchService.getMatchedMenuItems(list.searchTerm);
@@ -68,11 +69,12 @@ function NarrowItDownController(MenuSearchService){
 	};
 
 	list.errorMessage = function(){
-
-		return list.found.length == 0;
+		if(list.found.length === 0){
+			console.log(list.found);
+			return true;
+		}
+		return false;
 	}
-
-
 }
 
 // reaches out to the server (using the $htpp service)

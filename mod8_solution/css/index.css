@@ -1,3 +1,11 @@
+/*
+Anthony Borza
+Assignment 8
+Due Date: 4/06/2021
+index.css: style page for site;
+*/
+
+
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -24,3 +32,4 @@ tr:nth-child(even) {
 h1{
 	text-align: center;
 }
+

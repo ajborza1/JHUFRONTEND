@@ -74,6 +74,8 @@ function NarrowItDownController(MenuSearchService){
 	};
 	
 	// function to display error message
+	// if nothing is found or search item is 
+	// left blank
 	list.errorMessage = function(){
 		if(list.found.length === 0){
 			console.log("Nothing found!")

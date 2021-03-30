@@ -8,15 +8,15 @@ format
 <table>
 	<thead>
 		<tr>
-			 <th>Short Name</th>
 			 <th>Name</th>
+			 <th>Short Name</th>
 			 <th>Description</th>
 			 <th>Dont Want This One!</th>
 		</tr>
 	</thead>
 		<tr ng-repeat="item in list.found">
-		<td>{{item.short_name}}</td>
 		<td>{{item.name}}</td>
+		<td>{{item.short_name}}</td>
 		<td>{{item.description}}</td>
 		<td><button ng-click="list.onRemove({index: $index});">Remove Item</button></td>
 	</tr>

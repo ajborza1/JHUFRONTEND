@@ -1,14 +1,21 @@
 (function () {
 'use strict';
 
-angular.module('MenuApp')
+angular.module('Data')
 .controller('ItemsController', ItemsController);
 
 
 // item injected through states resolve
-ItemsController.$inject['item']
-function ItemsController(item){
+ItemsController.$inject = ['$stateParams', 'categoryList'];
+function ItemsController($stateParams, categoryList){
+
 	var itemDetail = this;
+	var categoryItem = categoryList[$stateParams.itemId];
+
+	// when i define in html will call here
+	itemDetail.name = categoryItem.name;
+	itemDetail.description = categoryItem.description;
+
 }
 
 

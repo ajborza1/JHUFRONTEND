@@ -1,10 +1,11 @@
+//
+
 (function () {
 'use strict';
 
 // declare another model call data
-angular.module('Data', ['MenuApp']);
+angular.module('Data', ['ui.router']);
 
-// retrieving it
-angular.module('Data')
+
 
 })();

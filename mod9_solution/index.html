@@ -1,35 +1,33 @@
-<html ng-app='MenuApp'>
+<html lang="en" ng-app='MenuApp'>
   <head>
     <meta charset="utf-8"> 
+    <link rel="stylesheet" href="css/index.css">
     <title>Assignment 9</title>
   </head>
   <body>
-    <h1>Welcome to the Restaurant</h1>
+    <h1>A Restaurant to Eat At</h1>
 
 
     <!-- Content of the view will be loaded here-->
     <ui-view></ui-view>
-
 
     <!-- Libraries -->
     <script src="lib/angular.min.js"></script>
     <script src="lib/angular-ui-router.min.js"></script>
 
     <!-- Modules -->
-    <script src="menu/js/data.module.js"></script>
     <script src="menu/js/menuapp.module.js"></script>
+    <script src="menu/js/data.module.js"></script>
 
-    <!-- Routes -->
+   <!-- Routes -->
     <script src="menu/js/routes.js"></script>
 
-
     <!-- 'Menu app' module artifacts -->
-    <script src="menu/js/menuapp.service.js"></script>
     <script src="menu/js/categories.component.js"></script>
     <script src="menu/js/items.component.js"></script>
+    <script src="menu/js/menuapp.service.js"></script>
     <script src="menu/js/items.controller.js"></script>
     <script src="menu/js/categories.controller.js"></script>
 
   </body>
-
 </html>

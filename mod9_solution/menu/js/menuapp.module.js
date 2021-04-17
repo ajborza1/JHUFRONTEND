@@ -5,6 +5,6 @@
 
 // declare another model call MenuApp, and declare 'Data'
 // as a dependency
-angular.module('MenuApp', ['Data', 'ui.router']);
+angular.module('MenuApp', ['ui.router', 'Data']);
 
 })();

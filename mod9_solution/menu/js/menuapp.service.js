@@ -11,9 +11,8 @@ MenuDataService.$inject = ['$http', 'ApiBasePath'];
 function MenuDataService($http, ApiBasePath){
 
 	var service = this;
-
-	service.categoryList = [];	// categories
-	service.item = []; // items
+	var categoryList = [];		// categories
+	var items = []; 			// items
 
 	// return a list of categories 
 	// and return a promise

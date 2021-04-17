@@ -1,10 +1,8 @@
-//
-
 (function () {
 'use strict';
 
 angular.module('Data')
-.config(RoutesConfig)
+.config(RoutesConfig);
 
 // 3 view home, categories, and items
 
@@ -12,7 +10,7 @@ RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 function RoutesConfig($stateProvider, $urlRouterProvider){
 
   // redirect to home if no other url matches
-  urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/');
 
   // set up UI states
   $stateProvider
@@ -42,13 +40,13 @@ function RoutesConfig($stateProvider, $urlRouterProvider){
       templateUrl: 'html/items.template.html',
       controller: 'ItemsController as items',
          resolve:{
-          item: ['MenuDataService', '$stateParams', 
-          function(MenuDataService, $stateParams){
-            return MenuDataService.getItemsForCategory()
-            //return MenuDataService.getItemsForCategory($stateParams.categoryShortName)
-            .then(function(categoryList){
+            item: ['MenuDataService', '$stateParams', 
+              function(MenuDataService, $stateParams){
+                return MenuDataService.getItemsForCategory()
+                //return MenuDataService.getItemsForCategory($stateParams.categoryShortName)
+                .then(function(categoryList){
               //return categoryList[$stateParams.categoryShortName];
-              return categoryList[$stateParams.categoryShortName];
+                  return categoryList[$stateParams.categoryShortName];
             });
           }]
       }

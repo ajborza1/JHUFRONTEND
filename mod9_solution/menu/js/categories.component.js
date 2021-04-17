@@ -4,7 +4,7 @@
 
 // shows all avaiable categories to user
 angular.module('Data')
-.component('Categories', {
+.component('categories', {
 	templateUrl: 'html/categories.template.html',
 	bindings:{
 		items: '<'

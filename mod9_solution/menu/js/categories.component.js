@@ -9,7 +9,6 @@ angular.module('Data')
 	bindings:{
 		items: '<'
 	}
-
 });
 
 })();

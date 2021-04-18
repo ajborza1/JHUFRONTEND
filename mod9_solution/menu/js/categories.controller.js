@@ -6,11 +6,12 @@ angular.module('Data')
 .controller('CategoriesController', CategoriesController);
 
 // items injected through states resolve
-CategoriesController.$inject = ['MenuDataService', 'categoryList'];
-function CategoriesController(MenuDataService, categoryList){
+CategoriesController.$inject = ['items'];
+function CategoriesController(items){
 	
-	var categoryDetails = this;
-	categoryDetails.categoryList = categoryList;
+	var categories = this;
+	categories.items = items;
+	console.log(categories);
 }
 
 })();

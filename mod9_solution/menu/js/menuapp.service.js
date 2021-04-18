@@ -20,12 +20,14 @@ function MenuDataService($http, ApiBasePath){
 		return $http({
 			method: 'GET',
 			url: (ApiBasePath + "/categories.json")
-		}).then(function(resonse){
+		}).then(function(response){
 
-			service.categoryList = resonse.data;
+			service.categoryList = response;
+			console.log(service.categoryList);
 			return service.categoryList;
 		});
 		return categoryList;
+
 	};
 
 	//return an item associated with the category
@@ -34,9 +36,9 @@ function MenuDataService($http, ApiBasePath){
 		return $http({
 			method: 'GET',
 			url: (ApiBasePath + "/menu_items.json?category=" + categoryShortName)
-		}).then(function(resonse){
-			service.item = resonse.data;
-			return service.item;
+		}).then(function(response){
+			service.items = response;
+			return service.items;
 		});
 		return items;
 	};

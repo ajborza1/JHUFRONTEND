@@ -38,6 +38,7 @@ function MenuDataService($http, ApiBasePath){
 			url: (ApiBasePath + "/menu_items.json?category=" + categoryShortName)
 		}).then(function(response){
 			service.items = response;
+			console.log(service.items);
 			return service.items;
 		});
 		return items;

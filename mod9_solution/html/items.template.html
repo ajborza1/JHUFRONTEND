@@ -1,2 +1,16 @@
-<div>Item name: {{ itemDetail.name }}</div>
-<div>Item description: {{ itemDetail.description }}</div>
+<a ui-sref="home">Home</a>  
+<a ui-sref="categories">Categories</a> 
+
+<table>
+	<thead>
+		<tr>
+			 <th>Name</th>
+			 <th>Short Name</th>
+			 <th>Description</th>
+		</tr>
+	</thead>
+		<td>{{itemDetail.name}}</td>
+		<td>{{itemDetail.short_name}}</td>
+		<td>{{itemDetail.description}}</td
+	</tr>
+</table>

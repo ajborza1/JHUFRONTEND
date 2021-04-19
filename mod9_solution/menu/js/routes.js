@@ -31,23 +31,23 @@ function RoutesConfig($stateProvider, $urlRouterProvider){
             return MenuDataService.getAllCategories();
           }]
       }
-    });
+    })
 
-    // // view for items
-    // .state('items', {
-    //   url: '/items/{categoryShortName}',
-    //   templateUrl: 'html/items.template.html',
-    //   controller: 'ItemsController as items',
-    //      resolve:{
-    //         item: ['MenuDataService', '$stateParams', 
-    //           function(MenuDataService, $stateParams){
-    //             return MenuDataService.getItemsForCategory($stateParams.categoryShortName)
-    //             .then(function(items){
-    //               return items.categoryShortName;
-    //         });
-    //       }]
-    //   }
-    // });
+    // view for items
+    .state('itemDetail', {
+      url: '/items/{itemId}',
+      templateUrl: 'html/items.template.html',
+      controller: 'ItemsController as itemDetail',
+         resolve:{
+            item: ['MenuDataService', '$stateParams', 
+              function(MenuDataService, $stateParams){
+                return MenuDataService.getItemsForCategory($stateParams.itemId)
+                .then(function(items){
+                  return items.menu_items;
+            });
+          }]
+      }
+    });
 }
 
 })();

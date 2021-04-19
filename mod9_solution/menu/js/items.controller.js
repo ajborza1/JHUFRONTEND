@@ -6,15 +6,18 @@ angular.module('Data')
 
 
 // item injected through states resolve
-ItemsController.$inject = ['$stateParams', 'item', '$scope'];
-function ItemsController($stateParams, item, $scope){
+ItemsController.$inject = ['$stateParams', 'item'];
+function ItemsController($stateParams, item){
 	
-	var itemDetail = this;
+    var itemDetail = this;
     itemDetail.name = $stateParams.itemId;
-    itemDetail.description = itemDetail.description;
-    console.log(itemDetail);
+    itemDetail.description = $stateParams.description;
+    console.log(itemDetail.name);
+    console.log(item);
 
 }
+
+
 
 
 })();

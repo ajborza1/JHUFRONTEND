@@ -38,16 +38,16 @@ function RoutesConfig($stateProvider, $urlRouterProvider){
       url: '/items/{itemId}',
       templateUrl: 'html/items.template.html',
       controller: 'ItemsController as itemDetail',
-         resolve:{
-            item: ['MenuDataService', '$stateParams', 
-              function(MenuDataService, $stateParams){
+       resolve: {
+      item: ['$stateParams', 'MenuDataService',
+            function ($stateParams, MenuDataService) {
                 return MenuDataService.getItemsForCategory($stateParams.itemId)
-                .then(function(items){
+                .then(function (items) {
                   return items.menu_items;
-            });
-          }]
-      }
-    });
+                });
+            }]
+    }
+  });
 }
 
 })();

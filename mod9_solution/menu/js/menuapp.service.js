@@ -7,43 +7,40 @@ angular.module('Data')
 
 
 // should have two methods
-MenuDataService.$inject = ['$http', 'ApiBasePath'];
-function MenuDataService($http, ApiBasePath){
+MenuDataService.$inject = ['$http', 'ApiBasePath', '$q', '$timeout'];
+function MenuDataService($http, ApiBasePath, $q, $timeout){
 
 	var service = this;
 	var categoryList = [];		// categories
 	var items = []; 			// items
 
-	// return a list of categories 
-	// and return a promise
+	// return a list of categories and return a promise
 	service.getAllCategories = function(){
-		return $http({
-			method: 'GET',
-			url: (ApiBasePath + "/categories.json")
-		}).then(function(response){
+	  var deferred = $q.defer();
+        $http.get(ApiBasePath + "/categories.json")
+        .success(function(response) {
+            service.categoryList = response;
+            $timeout(function () 
+            {
+                deferred.resolve(response);
+            }, 200);
+        })
+        return deferred.promise;
+    };
 
-			service.categoryList = response;
-			console.log(service.categoryList);
-			return service.categoryList;
-		});
-		return categoryList;
-
-	};
-
-	//return an item associated with the category
-	// and return a promise
-	service.getItemsForCategory = function(categoryShortName){	
-		return $http({
-			method: 'GET',
-			url: (ApiBasePath + "/menu_items.json?category=" + categoryShortName)
-		}).then(function(response){
-			service.items = response;
-			console.log(service.items);
-			return service.items;
-		});
-		return items;
-	};
-
+	//return an item associated with the category and return a promise
+	  service.getItemsForCategory = function (categoryByShortName) {
+        var deferred = $q.defer();
+        $http.get(ApiBasePath + '/menu_items.json?category=' + categoryByShortName)
+        .success(function(response) {
+            service.items = response;
+            $timeout(function () 
+            {
+                deferred.resolve(response);
+            }, 200);
+        })
+        return deferred.promise;
+    };
 }
 
 })();

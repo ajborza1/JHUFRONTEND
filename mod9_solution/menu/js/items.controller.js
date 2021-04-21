@@ -5,41 +5,48 @@ angular.module('Data')
 .controller('ItemsController', ItemsController);
 
 
-
 ItemsController.$inject = ['$stateParams', 'item', '$scope'];
 function ItemsController($stateParams, item, $scope) {
 
     var itemDetail = this;
     itemDetail.item = $stateParams.itemId;
     console.log(itemDetail);
-	console.log(item);
-	itemDetail.short_name = item.short_name;
-	console.log(itemDetail);
+
+    // results array that holds specifics about menu item
     var results = [];
+
+    // variables to hold elements in array
     var desc = "";
     var name = "";
     var short_name = "";
     var price_large = "";
     var price_small = "";
 
-    for (var i = 0; i < item.length; i++)
+    for(var i = 0; i < item.length; i++)
     {
-        desc = "\n" + item[i].description;
-        name = "\n" + item[i].name;
-        short_name = "\n" + item[i].short_name;
-        price_large = "\n" +  item[i].price_large;
-        price_large = "\n" +  item[i].price_large;
-        price_small = "\n" +  item[i].price_small;
+        // set variables to array elements
+        desc = item[i].description;
+        name = item[i].name;
+        short_name = item[i].short_name;
+        price_large = item[i].price_large;
+        price_large = item[i].price_large;
 
-        results.push(desc + " " + name + " " + short_name + " " + price_large + " " + price_small);
+        // push the results 
+        results.push("Short Name: [" + short_name + " ]" +
+                     " Name: [" + name + "]" +
+                     " Description: [" + desc + "]" +
+                     " Cost: [$ " +  price_large + " ]"
+                     );
         console.log(results);
     }
+   
+    // make variables accessible on html page
     $scope.desc = desc;
     $scope.name = name;
     $scope.short_name = short_name;
     $scope.price_large = price_large;
- 	$scope.price_small = price_small;
  	$scope.results = results;
+    
     console.log(results);
 }
 

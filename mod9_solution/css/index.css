@@ -4,8 +4,12 @@ li[ui-sref]:hover {
   border: solid black 1px;
   padding-left: 5px;
   padding-right: 5px;
+  color: blue;
 }
 
+body{
+  background-color: #dddddd;
+}
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -16,13 +20,11 @@ th{
 }
 td, th {
   border: 1px solid #dddddd;
-  text-align: left;
   padding: 8px;
-
 }
 
-button{
-	color: black;
+td{
+    text-align: left;
 }
 
 tr:nth-child(even) {
@@ -37,5 +39,7 @@ h1{
 .home{
   text-align: center;
 }
-
+.img1{
+  text-align: center;
+}
 

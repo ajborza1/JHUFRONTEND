@@ -1,3 +1,10 @@
+// Anthony Borza
+// Assignment 9
+// Due Date: 4/27/2021
+// routes.js: this class configures the routes and view
+// states. 
+
+
 (function () {
 'use strict';
 
@@ -38,7 +45,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider){
       url: '/items/{itemId}',
       templateUrl: 'html/items.template.html',
       controller: 'ItemsController as itemDetail',
-       resolve: {
+      resolve: {
       item: ['$stateParams', 'MenuDataService',
             function ($stateParams, MenuDataService) {
                 return MenuDataService.getItemsForCategory($stateParams.itemId)
@@ -46,7 +53,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider){
                   return items.menu_items;
                 });
             }]
-    }
+      }
   });
 }
 

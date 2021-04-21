@@ -1,3 +1,8 @@
+// Anthony Borza
+// Assignment 9
+// Due Date: 4/27/2021
+// categories.controller.js: This class handles the business logic for
+// returning a list of categories. 
 
 (function () {
 'use strict';

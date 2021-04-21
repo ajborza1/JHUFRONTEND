@@ -1,3 +1,11 @@
+// Anthony Borza
+// Assignment 9
+// Due Date: 4/27/2021
+// items.controller.js: This class handles the business logic for
+// returning the itemID with the other associated elements to that 
+// itemId. Scope is used so that we can easily reference it in html.
+
+
 (function () {
 'use strict';
 

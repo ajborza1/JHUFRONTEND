@@ -1,3 +1,11 @@
+// Anthony Borza
+// Assignment 9
+// Due Date: 4/27/2021
+// menuapp.service.js: This class handles the business logic for
+// for reaching out to the restraunts website and returning the 
+// restaraunts categories and items using the following methods 
+// defined below.
+
 (function () {
 'use strict';
 
@@ -6,7 +14,8 @@ angular.module('Data')
 .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com");
 
 
-// should have two methods
+// contains two methods that are used to reach out to server
+// and retrieve categories and menu items for restaturant 
 MenuDataService.$inject = ['$http', 'ApiBasePath', '$q', '$timeout'];
 function MenuDataService($http, ApiBasePath, $q, $timeout){
 
@@ -14,7 +23,8 @@ function MenuDataService($http, ApiBasePath, $q, $timeout){
 	var categoryList = [];		// categories
 	var items = []; 			// items
 
-	// return a list of categories and return a promise
+	// return a list of categories and returns a promise
+    // which is a result of  using the $htpp service
 	service.getAllCategories = function(){
 	  var deferred = $q.defer();
         $http.get(ApiBasePath + "/categories.json")

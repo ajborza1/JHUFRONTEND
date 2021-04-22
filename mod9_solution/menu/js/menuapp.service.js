@@ -30,8 +30,7 @@ function MenuDataService($http, ApiBasePath, $q, $timeout){
         $http.get(ApiBasePath + "/categories.json")
         .success(function(response) {
             service.categoryList = response;
-            $timeout(function () 
-            {
+            $timeout(function () {
                 deferred.resolve(response);
             }, 200);
         })
@@ -44,8 +43,7 @@ function MenuDataService($http, ApiBasePath, $q, $timeout){
         $http.get(ApiBasePath + '/menu_items.json?category=' + categoryByShortName)
         .success(function(response) {
             service.items = response;
-            $timeout(function () 
-            {
+            $timeout(function () {
                 deferred.resolve(response);
             }, 200);
         })

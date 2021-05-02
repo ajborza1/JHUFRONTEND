@@ -1,0 +1,50 @@
+<div class="container">
+  <h1>Sign up for the NewsLetter!</h1>
+  <fieldset>
+      <legend>Registration</legend>
+      <form name='regForm' novalidate ng-submit="signup.submitForm(regForm)">
+        <input type="text" name="firstName" placeholder=" Enter your First Name:"
+          ng-model="SignUpController.signup.firstName"
+          required >
+            {{SignUpController.signup.firstName}}
+            <span ng-if="(regForm.userInfo.firstName.$error.required) && regForm.userInfo.firstName.$touched"></span>
+          <br>
+          <input type="text" name="lastName" placeholder="Enter your Last Name: "
+            ng-model="SignUpController.signup.lastName"
+            required>
+              {{SignUpController.signup.lastName}}
+              <span ng-if="(regForm.lastName.$error.required) && regForm.lastName.$touched"></span>
+            <br>
+        <input type="email" name="email" placeholder="Enter your Email:"
+          ng-model="SignUpController.signup.email"
+          required>
+            {{SignUpController.signup.email}}
+          <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+            Must be a valid email address: handle@domain format
+          </span>
+          <br>
+        <input type="text" name="phone" placeholder="Phone: ##########"
+        ng-model="SignUpController.signup.phone"
+         pattern="(\d{3})(\d{3})(\d{4})">
+          {{SignUpController.signup.phone}}
+          <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+            Phone must be in the format ##########.
+          </span>
+          <br>
+          <input type="text" name="shortName" placeholder="Enter a Short Name:"
+          ng-model="SignUpController.signup.shortName"
+          required>
+          {{SignUpController.signup.shortName}}
+          <br>
+        <button
+          ng-disabled="regForm.$invalid"
+          ng-click="reg.submit()">Submit</button>
+
+          <div style="margin-top: 10px;">
+            Form valid? {{regForm.$valid}}
+          </div>
+          <div id="sign-up-complete" ng-if="SignUpController.signup.saved">Your information has been saved.<div>
+            {{SignUpController.signup.saved}}
+      </form>
+    </fieldset>
+</div>

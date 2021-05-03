@@ -1,50 +1,50 @@
-<div class="container">
+<div class="container" style="text-align: center;">
   <h1>Sign up for the NewsLetter!</h1>
   <fieldset>
-      <legend>Registration</legend>
-      <form name='regForm' novalidate ng-submit="signup.submitForm(regForm)">
-        <input type="text" name="firstName" placeholder=" Enter your First Name:"
-          ng-model="SignUpController.signup.firstName"
+      <legend style="color: white;">Registration</legend>
+      <form name='regForm' novalidate>
+        <input type="text" name="firstName" placeholder=" Enter your First Name:"class="form-group"
+          ng-model="signupCtrl.user.firstName"
           required >
-            {{SignUpController.signup.firstName}}
-            <span ng-if="(regForm.userInfo.firstName.$error.required) && regForm.userInfo.firstName.$touched"></span>
-          <br>
-          <input type="text" name="lastName" placeholder="Enter your Last Name: "
-            ng-model="SignUpController.signup.lastName"
+            <!-- {{signupCtrl.user.firstName}} -->
+            <span ng-if="(regForm.firstName.$error.required) && regForm.firstName.$touched"></span><br>
+
+          <input type="text" name="lastName" placeholder="Enter your Last Name: " class="form-group"
+            ng-model="signupCtrl.user.lastName"
             required>
-              {{SignUpController.signup.lastName}}
-              <span ng-if="(regForm.lastName.$error.required) && regForm.lastName.$touched"></span>
-            <br>
-        <input type="email" name="email" placeholder="Enter your Email:"
-          ng-model="SignUpController.signup.email"
+              <!-- {{signupCtrl.user.lastName}} -->
+              <span ng-if="(regForm.lastName.$error.required) && regForm.lastName.$touched"></span><br>
+
+        <input type="email" name="email" placeholder="Enter your Email:" class="form-group"
+          ng-model="signupCtrl.user.email"
           required>
-            {{SignUpController.signup.email}}
-          <span ng-if="regForm.email.$invalid && regForm.email.$touched">
-            Must be a valid email address: handle@domain format
-          </span>
-          <br>
-        <input type="text" name="phone" placeholder="Phone: ##########"
-        ng-model="SignUpController.signup.phone"
-         pattern="(\d{3})(\d{3})(\d{4})">
-          {{SignUpController.signup.phone}}
-          <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
-            Phone must be in the format ##########.
-          </span>
-          <br>
-          <input type="text" name="shortName" placeholder="Enter a Short Name:"
-          ng-model="SignUpController.signup.shortName"
-          required>
-          {{SignUpController.signup.shortName}}
-          <br>
+            <!-- {{signupCtrl.user.email}} -->
+          <span ng-if="regForm.email.$invalid && regForm.email.$touched"> Must be a valid email address: handle@domain format </span> <br>
+        <input type="text" name="phone" placeholder="Phone: ##########" class="form-group"
+          ng-model="signupCtrl.user.phone"
+          pattern="(\d{3})(\d{3})(\d{4})">
+          <!-- {{signupCtrl.signup.phone}} -->
+          <span ng-if="regForm.phone.$invalid && regForm.phone.$touched"> Phone must be in the format ##########. </span> <br>
+          <input type="text" name="shortName" placeholder="Enter a Short Name:" class="form-group"
+            ng-focus="focused = true" focused="false"
+            ng-model="signupCtrl.user.shortName"
+            required>
+          <!-- {{signupCtrl.user.shortName}} -->
+          <span ng-if="(regForm.shortName.$error.required) && regForm.shortName.$touched" class="errorMessage"></span> <br>
+          <span ng-if="(!regForm.shortName.$error.required) && signupCtrl.invalidShortName" class="errorMessage"> No Such Menu Item Exists.</span><br>
         <button
-          ng-disabled="regForm.$invalid"
-          ng-click="reg.submit()">Submit</button>
+            ng-disabled="regForm.$invalid"
+            ng-click="signupCtrl.submitForm()">
+            Submit
+        </button>
 
           <div style="margin-top: 10px;">
             Form valid? {{regForm.$valid}}
           </div>
-          <div id="sign-up-complete" ng-if="SignUpController.signup.saved">Your information has been saved.<div>
-            {{SignUpController.signup.saved}}
+          <div id="sign-up-complete" ng-if="signupCtrl.saveUser">
+            User Added. View My Info.
+            <div>
+            <!-- {{signupCtrl.saveUser}} -->
       </form>
     </fieldset>
 </div>

@@ -29,9 +29,10 @@
             ng-focus="focused = true" focused="false"
             ng-model="signupCtrl.user.shortName"
             required>
+
           <!-- {{signupCtrl.user.shortName}} -->
           <span ng-if="(regForm.shortName.$error.required) && regForm.shortName.$touched" class="errorMessage"></span> <br>
-          <span ng-if="(!regForm.shortName.$error.required) && signupCtrl.invalidShortName" class="errorMessage"> No Such Menu Item Exists.</span><br>
+          <span ng-if=" (!regForm.shortName.$error.required) && signupCtrl.invalidShortName" class="errorMessage"> No Such Menu Item Exists.</span><br>
         <button
             ng-disabled="regForm.$invalid"
             ng-click="signupCtrl.submitForm()">

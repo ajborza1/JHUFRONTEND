@@ -1,7 +1,14 @@
 
-<a ui-sref="public.signup" style="text-align: center; color: white;"
-  ng-if="myInfoCtrl.userInfo == undefinded || myInfoCtrl.userInfo == empty">
-  Not Signed Up Yet. Sign Up Now! </a>
+<!--
+Anthony Borza
+Due Date: 5/10/2021
+myinfo.html: displays users infomation in a table
+-->
+<div style="text-align: center;">
+  <a ui-sref="public.signup" style="color: white;"
+    ng-if="myInfoCtrl.userInfo == undefinded || myInfoCtrl.userInfo == empty">
+    Not Signed Up Yet. Sign Up Now! </a>
+<div>
 
 <div id="info"  ng-if="myInfoCtrl.userInfo">
     <table class="table table-dark">

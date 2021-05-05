@@ -1,50 +1,53 @@
+<!--
+Anthony Borza
+Due Date: 5/10/2021
+signup.html: displays a signup form
+-->
 <div class="container" style="text-align: center;">
   <h1>Sign up for the NewsLetter!</h1>
   <fieldset>
       <legend style="color: white;">Registration</legend>
       <form name='regForm' novalidate>
-        <input type="text" name="firstName" placeholder=" Enter your First Name:"class="form-group"
+        <input type="text" name="firstName" placeholder=" Enter your First Name:" style="color: black;"class="form-group"
           ng-model="signupCtrl.user.firstName"
           required >
             <!-- {{signupCtrl.user.firstName}} -->
             <span ng-if="(regForm.firstName.$error.required) && regForm.firstName.$touched"></span><br>
 
-          <input type="text" name="lastName" placeholder="Enter your Last Name: " class="form-group"
+          <input type="text" name="lastName" placeholder="Enter your Last Name: " style="color: black;" class="form-group"
             ng-model="signupCtrl.user.lastName"
             required>
               <!-- {{signupCtrl.user.lastName}} -->
               <span ng-if="(regForm.lastName.$error.required) && regForm.lastName.$touched"></span><br>
 
-        <input type="email" name="email" placeholder="Enter your Email:" class="form-group"
+        <input type="email" name="email" placeholder="Enter your Email:" style="color: black;" class="form-group"
           ng-model="signupCtrl.user.email"
           required>
             <!-- {{signupCtrl.user.email}} -->
           <span ng-if="regForm.email.$invalid && regForm.email.$touched"> Must be a valid email address: handle@domain format </span> <br>
-        <input type="text" name="phone" placeholder="Phone: ##########" class="form-group"
+        <input type="text" name="phone" placeholder="Phone: ##########" style="color: black;" class="form-group"
           ng-model="signupCtrl.user.phone"
           pattern="(\d{3})(\d{3})(\d{4})">
           <!-- {{signupCtrl.signup.phone}} -->
           <span ng-if="regForm.phone.$invalid && regForm.phone.$touched"> Phone must be in the format ##########. </span> <br>
-          <input type="text" name="shortName" placeholder="Enter a Short Name:" class="form-group"
-            ng-focus="focused = true" focused="false"
-            ng-model="signupCtrl.user.shortName"
-            required>
+        <input type="text" name="shortName" placeholder="Enter a Short Name:" class="form-group"
+          ng-focus="focused = true" focused="false"
+          ng-model="signupCtrl.user.shortName"
+          required>
 
-          <!-- {{signupCtrl.user.shortName}} -->
-          <span ng-if="(regForm.shortName.$error.required) && regForm.shortName.$touched" class="errorMessage"></span> <br>
-          <span ng-if=" (!regForm.shortName.$error.required) && signupCtrl.invalidShortName" class="errorMessage"> No Such Menu Item Exists.</span><br>
-        <button
+        <!-- {{signupCtrl.user.shortName}} -->
+        <span ng-if="(regForm.shortName.$error.required) && regForm.shortName.$touched" class="errorMessage"></span> <br>
+        <span ng-if=" (!regForm.shortName.$error.required) && signupCtrl.invalidShortName" style="color: yellow;" class="errorMessage"> No Such Menu Item Exists.</span><br>
+
+        <button style="color: blue;"
             ng-disabled="regForm.$invalid"
-            ng-click="signupCtrl.submitForm()">
-            Submit
+            ng-click="signupCtrl.submitForm()"> Submit
         </button>
 
           <div style="margin-top: 10px;">
             Form valid? {{regForm.$valid}}
           </div>
-          <div id="sign-up-complete" ng-if="signupCtrl.saveUser">
-            User Added. View My Info.
-            <div>
+          <div id="sign-up-complete" ng-if="signupCtrl.saveUser"> User Added. View My Info. <div>
             <!-- {{signupCtrl.saveUser}} -->
       </form>
     </fieldset>

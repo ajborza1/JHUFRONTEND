@@ -1,3 +1,9 @@
+
+// Anthony Borza
+// Due Date: 5/10/2021
+// myinfo.controller.js: handles displays
+// user info
+
 (function (){
 
 angular.module('public')

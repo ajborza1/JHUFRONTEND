@@ -1,3 +1,10 @@
+
+// Anthony Borza
+// Due Date: 5/10/2021
+// MenuService.spec.js class: a simple test that
+// determines if the favorite item exists in the menu or
+// doesn't exist.
+
 describe("menu", function(){
 
   var menu, $httpBackend, ApiPath;
@@ -15,7 +22,7 @@ describe("menu", function(){
     });
   });
 
-  //test for menu item with NL1 to see if it exists.
+  // test for menu item with NL1 to see if it exists.
   // test should pass because item NL1 does exist
   it('return short name for NL1', function(){
     $httpBackend.whenGET(ApiPath + '/menu_items/NL1.json').respond(['Vegetable Lo Mein']);
@@ -25,12 +32,12 @@ describe("menu", function(){
     $httpBackend.flush();
   });
 
-  //checks to see if AAAQ item does not exist and throws 500
-  // exception
+  // checks to see if AAAQ item does not exist and throws 500
+  // exception (Internal Server Error)
   it('return item does not exist', function(){
-    $httpBackend.whenGET(ApiPath + '/menu_items/AAAQ.json').respond(500, 'error')
+    $httpBackend.whenGET(ApiPath + '/menu_items/AAAQ.json').respond(500, 'error, item does not exist')
       menu.getMenuItem('AAAQ').then(function(response){
-        expect(response.status).toEqual(500, 'error');
+        expect(response.status).toEqual(500, 'error, item does not exist');
       });
     $httpBackend.flush();
   });

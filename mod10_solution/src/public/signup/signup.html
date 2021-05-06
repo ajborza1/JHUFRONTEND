@@ -30,14 +30,15 @@ signup.html: displays a signup form
           pattern="(\d{3})(\d{3})(\d{4})">
           <!-- {{signupCtrl.signup.phone}} -->
           <span ng-if="regForm.phone.$invalid && regForm.phone.$touched"> Phone must be in the format ##########. </span> <br>
-        <input type="text" name="shortName" placeholder="Enter a Short Name:" class="form-group"
+        <input type="text" id="shortName" name="shortName" placeholder="Enter a Short Name:" style="color: black;"  class="form-group"
           ng-focus="focused = true" focused="false"
           ng-model="signupCtrl.user.shortName"
+          ng-blur="signupCtr.submitForm()"
           required>
-
+          <span ng-if=" (!regForm.shortName.$error.required) && signupCtrl.invalidShortName" style="color: yellow;" class="errorMessage"><br>
+            No Such Menu Item Exists.
+          </span><br>
         <!-- {{signupCtrl.user.shortName}} -->
-        <span ng-if="(regForm.shortName.$error.required) && regForm.shortName.$touched" class="errorMessage"></span> <br>
-        <span ng-if=" (!regForm.shortName.$error.required) && signupCtrl.invalidShortName" style="color: yellow;" class="errorMessage"> No Such Menu Item Exists.</span><br>
 
         <button style="color: blue;"
             ng-disabled="regForm.$invalid"
